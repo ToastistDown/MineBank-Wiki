@@ -1,1 +1,120 @@
 
+/* =========================================
+   MineBank Wiki – eigenes Dark Design
+   ========================================= */
+
+/* Grundfarben */
+[data-md-color-scheme="slate"] {
+    --md-default-bg-color: #0b1118;
+    --md-default-fg-color: #e8edf2;
+    --md-default-fg-color--light: #aeb8c4;
+
+    --md-primary-fg-color: #101d2c;
+    --md-primary-fg-color--light: #172a3f;
+    --md-primary-fg-color--dark: #08111c;
+
+    --md-accent-fg-color: #e8b84a;
+
+    --md-code-bg-color: #111c28;
+}
+
+/* Kopfzeile */
+.md-header {
+    background: #101d2c;
+    border-bottom: 1px solid rgba(232, 184, 74, 0.25);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Tabs / Navigation */
+.md-tabs {
+    background: #0d1824;
+}
+
+/* Hauptbereich */
+.md-main {
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(30, 61, 91, 0.20),
+            transparent 40%
+        ),
+        #0b1118;
+}
+
+/* Überschriften */
+.md-typeset h1 {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.md-typeset h2 {
+    color: #f0c96b;
+    font-weight: 650;
+}
+
+.md-typeset h3 {
+    color: #e8edf2;
+}
+
+/* Links */
+.md-typeset a {
+    color: #63a9ff;
+}
+
+.md-typeset a:hover {
+    color: #e8b84a;
+}
+
+/* Linke Navigation */
+.md-nav__link--active {
+    color: #e8b84a !important;
+    font-weight: 700;
+}
+
+/* Suchfeld */
+.md-search__form {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+}
+
+/* Code */
+.md-typeset code {
+    border-radius: 5px;
+}
+
+/* Tabellen */
+.md-typeset table:not([class]) {
+    background: #101923;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.md-typeset table:not([class]) th {
+    background: #17283a;
+    color: #f0c96b;
+}
+
+/* Hinweisboxen */
+.md-typeset .admonition,
+.md-typeset details {
+    background: #101923;
+    border-radius: 8px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #080d13;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #26394d;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #e8b84a;
+}
