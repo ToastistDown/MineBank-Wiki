@@ -1,0 +1,41 @@
+site_name: MineBank Wiki
+site_description: Offizielle Dokumentation der Minecraft-Mod MineBank
+
+theme:
+  name: material
+  language: de
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+
+nav:
+  - Startseite: index.md
+  - Erste Schritte:
+      - Installation: erste-schritte/installation.md
+      - Schnellstart: erste-schritte/schnellstart.md
+  - Konten:
+      - Privatkonto: konten/privatkonto.md
+      - Bankkarte: konten/bankkarte.md
+      - Firmenkonto: konten/firmenkonto.md
+  - Bargeld & Automaten:
+      - Bankautomat: bargeld/bankautomat.md
+      - Münzeinzahlautomat: bargeld/muenzautomat.md
+      - Portemonnaie: bargeld/portemonnaie.md
+      - Geldkoffer: bargeld/geldkoffer.md
+  - Bank:
+      - Bankmitarbeiter: bank/bankmitarbeiter.md
+      - Bankcomputer: bank/bankcomputer.md
+      - Tresor: bank/tresor.md
+      - Bankzonen: bank/bankzonen.md
+  - Kredite: kredite.md
+  - Daueraufträge: dauerauftraege.md
+  - Staatskasse: staatskasse.md
+  - Crafting-Rezepte: crafting.md
+  - Befehle: befehle.md
+  - Problemlösungen: probleme.md
+  - Entwickler:
+      - API: entwickler/api.md
+      - Integrationen: entwickler/integrationen.md
