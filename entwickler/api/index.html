@@ -1,0 +1,2306 @@
+
+<!doctype html>
+<html lang="de" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Offizielle Dokumentation der Minecraft-Mod MineBank">
+      
+      
+        <meta name="author" content="Toast_ist_Down">
+      
+      
+      
+        <link rel="prev" href="../../probleme/">
+      
+      
+        <link rel="next" href="../integrationen/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>API - MineBank Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#minebank-api" class="md-skip">
+          Zum Inhalt
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Kopfzeile">
+    <a href="../.." title="MineBank Wiki" class="md-header__button md-logo" aria-label="MineBank Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MineBank Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Helles Design"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Helles Design" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Dunkles Design"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Dunkles Design" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Suche" placeholder="Suche" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Suche">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Teilen" aria-label="Teilen" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Zurücksetzen" aria-label="Zurücksetzen" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Suche wird initialisiert
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MineBank Wiki" class="md-nav__button md-logo" aria-label="MineBank Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MineBank Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏠 Startseite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚀 Erste Schritte
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🚀 Erste Schritte
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../erste-schritte/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../erste-schritte/schnellstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schnellstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💳 Konten & Karten
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💳 Konten & Karten
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../konten/privatkonto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Privatkonto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../konten/bankkarte/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bankkarte
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../konten/firmenkonto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Firmenkonto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../konten/firmenkarte/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Firmenkarte
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💶 Bargeld & Automaten
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💶 Bargeld & Automaten
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bargeld/bankautomat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bankautomat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bargeld/muenzautomat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Münzeinzahlautomat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bargeld/portemonnaie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Portemonnaie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bargeld/geldkoffer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Geldkoffer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏦 Bankverwaltung
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🏦 Bankverwaltung
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bank/bankmitarbeiter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bankmitarbeiter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bank/kartendrucker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kartendrucker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bank/bankcomputer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bankcomputer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bank/tresor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tresor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bank/bankzonen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bankzonen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kredite/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💰 Kredite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dauerauftraege/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔄 Daueraufträge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../staatskasse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏛️ Staatskasse
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 Referenz
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📚 Referenz
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crafting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Crafting-Rezepte
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../befehle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Befehle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../probleme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problemlösungen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    👨‍💻 Entwickler
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    👨‍💻 Entwickler
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#grundregeln" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ Grundregeln
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ Grundregeln">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cent-oder-euro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💶 Cent oder Euro?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uuids-richtig-verwenden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🆔 UUIDs richtig verwenden
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serverthread" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧵 Serverthread
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrationen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrationen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#grundregeln" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ Grundregeln
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ Grundregeln">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cent-oder-euro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💶 Cent oder Euro?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uuids-richtig-verwenden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🆔 UUIDs richtig verwenden
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serverthread" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧵 Serverthread
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="minebank-api">👨‍💻 MineBank API</h1>
+<p>MineBank stellt eine öffentliche Java-API bereit, über die andere Minecraft-Mods auf Konten, Firmenkonten, Bargeld, Kredite und die Staatskasse zugreifen können.</p>
+<p>Der öffentliche Einstiegspunkt lautet:</p>
+<div class="highlight"><pre><span></span><code><span class="n">de</span><span class="p">.</span><span class="na">codex</span><span class="p">.</span><span class="na">bankmod</span><span class="p">.</span><span class="na">BankApi</span>
+</code></pre></div>
+<hr />
+<h2 id="grundregeln">⚙️ Grundregeln</h2>
+<p>Bei der Verwendung der API gibt es einige wichtige Regeln.</p>
+<h3 id="cent-oder-euro">💶 Cent oder Euro?</h3>
+<p>Methoden <strong>ohne <code>Euros</code> im Namen</strong> verwenden Beträge in <strong>Cent</strong>.</p>
+<p>Beispiel:</p>
+<div class="highlight"><pre><span></span><code><span class="n">BankApi</span><span class="p">.</span><span class="na">deposit</span><span class="p">(</span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="mi">1999</span><span class="p">);</span>
+</code></pre></div>
+<p>entspricht:</p>
+<div class="highlight"><pre><span></span><code>19,99 €
+</code></pre></div>
+<p>Methoden mit:</p>
+<div class="highlight"><pre><span></span><code>Euros
+</code></pre></div>
+<p>im Namen nehmen dagegen einen String entgegen.</p>
+<p>Beispiel:</p>
+<div class="highlight"><pre><span></span><code><span class="n">BankApi</span><span class="p">.</span><span class="na">depositEuros</span><span class="p">(</span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="s">"19,99"</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="uuids-richtig-verwenden">🆔 UUIDs richtig verwenden</h2>
+<p>Spieler- und Firmenkonten verwenden unterschiedliche IDs.</p>
+<div class="highlight"><pre><span></span><code>👤 Spielerkonto
+→ Spieler-UUID
+
+🏢 Firmenkonto
+→ Firmenkonto-UUID
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Nicht verwechseln</p>
+<p>Funktionen für Spielerkonten erwarten die <strong>Spieler-UUID</strong>.</p>
+<p>Funktionen für Firmenkonten erwarten die <strong>UUID des Firmenkontos</strong>.</p>
+</div>
+<hr />
+<h2 id="serverthread">🧵 Serverthread</h2>
+<p>API-Aufrufe, die Inventare oder Konten verändern, sollten auf dem <strong>Serverthread</strong> ausgeführt werden.</p>
+<p>Die API ist für vertrauenswürdige Servermods vorgesehen.</p>
+<p>Aufrufende Mods müssen ihre eigenen Berechtigungen und fachlichen Voraussetzungen prüfen.</p>
+<hr />
+<h1 id="privatkonten">👤 Privatkonten</h1>
+<h2 id="konto-vorhanden">Konto vorhanden?</h2>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">exists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BankApi</span><span class="p">.</span><span class="na">accountExists</span><span class="p">(</span><span class="n">playerId</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="kontostand-abrufen">Kontostand abrufen</h2>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BankApi</span><span class="p">.</span><span class="na">getBalance</span><span class="p">(</span><span class="n">playerId</span><span class="p">);</span>
+</code></pre></div>
+<p>Der Rückgabewert ist ein Centbetrag.</p>
+<hr />
+<h2 id="guthaben-prufen">Guthaben prüfen</h2>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">enough</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BankApi</span><span class="p">.</span><span class="na">hasBalance</span><span class="p">(</span>
+<span class="w">    </span><span class="n">playerId</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">5000</span>
+<span class="p">);</span>
+</code></pre></div>
+<p>Euro-Variante:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">enough</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BankApi</span><span class="p">.</span><span class="na">hasBalanceEuros</span><span class="p">(</span>
+<span class="w">    </span><span class="n">playerId</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"50,00"</span>
+<span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="geld-gutschreiben">📥 Geld gutschreiben</h2>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BankApi</span><span class="p">.</span><span class="na">deposit</span><span class="p">(</span>
+<span class="w">    </span><span class="n">playerId</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">5000</span>
+<span class="p">);</span>
+</code></pre></div>
+<p>Mit Quelle:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BankApi</span><span class="p">.</span><span class="na">deposit</span><span class="p">(</span>
+<span class="w">    </span><span class="n">playerId</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">5000</span><span class="p">,</span>
+<span class="w">    </span><span class="n">source</span>
+<span class="p">);</span>
+</code></pre></div>
+<p>Euro-Variante:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BankApi</span><span class="p">.</span><span class="na">depositEuros</span><span class="p">(</span>
+<span class="w">    </span><span class="n">playerId</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"50,00"</span><span class="p">,</span>
+<span class="w">    </span><span class="n">source</span>
+<span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="geld-abbuchen">📤 Geld abbuchen</h2>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BankApi</span><span class="p">.</span><span class="na">withdraw</span><span class="p">(</span>
+<span class="w">    </span><span class="n">playerId</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">5000</span>
+<span class="p">);</span>
+</code></pre></div>
+<p>Euro-Variante:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BankApi</span><span class="p">.</span><span class="na">withdrawEuros</span><span class="p">(</span>
+<span class="w">    </span><span class="n">playerId</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"50,00"</span><span class="p">,</span>
+<span class="w">    </span><span class="n">source</span>
+<span class="p">);</span>
+</code></pre></div>
+<hr />
+<h1 id="spieleruberweisungen">💸 Spielerüberweisungen</h1>
+<p>Für Überweisungen zwischen Spielerkonten stehen gekoppelte Transfermethoden zur Verfügung.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BankApi</span><span class="p">.</span><span class="na">transfer</span><span class="p">(</span>
+<span class="w">    </span><span class="n">fromPlayerId</span><span class="p">,</span>
+<span class="w">    </span><span class="n">toPlayerId</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">1999</span><span class="p">,</span>
+<span class="w">    </span><span class="n">source</span>
+<span class="p">);</span>
+</code></pre></div>
+<p>Euro-Variante:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BankApi</span><span class="p">.</span><span class="na">transferEuros</span><span class="p">(</span>
+<span class="w">    </span><span class="n">fromPlayerId</span><span class="p">,</span>
+<span class="w">    </span><span class="n">toPlayerId</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"19,99"</span><span class="p">,</span>
+<span class="w">    </span><span class="n">source</span>
+<span class="p">);</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Transfermethoden verwenden</p>
+<p>Für zusammengehörende Überweisungen sollten die vorgesehenen Transfermethoden verwendet werden, statt selbst zuerst <code>withdraw</code> und anschließend <code>deposit</code> aufzurufen.</p>
+</div>
+<hr />
+<h1 id="kredite">💰 Kredite</h1>
+<p>Die API kann persönliche Kredite abrufen, aufnehmen und zurückzahlen.</p>
+<h2 id="kredite-abrufen">Kredite abrufen</h2>
+<div class="highlight"><pre><span></span><code><span class="n">List</span><span class="o">&lt;</span><span class="n">PersonalLoan</span><span class="o">&gt;</span><span class="w"> </span><span class="n">loans</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">getPersonalLoans</span><span class="p">(</span><span class="n">playerId</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="offene-kredite-zahlen">Offene Kredite zählen</h2>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">getOpenPersonalLoanCount</span><span class="p">(</span><span class="n">playerId</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="kredit-aufnehmen">Kredit aufnehmen</h2>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">takePersonalLoan</span><span class="p">(</span>
+<span class="w">        </span><span class="n">playerId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">amountCents</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Euro-Variante:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">takePersonalLoanEuros</span><span class="p">(</span>
+<span class="w">        </span><span class="n">playerId</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"5000"</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Abweichung zum NPC</p>
+<p>Die API-Kreditaufnahme verwendet aktuell einen Überladungsweg mit <strong>Starttag 0</strong>.</p>
+<p>Entwickler sollten deshalb nicht automatisch davon ausgehen, dass die relative Erstfälligkeit exakt dem normalen NPC-Kreditablauf entspricht.</p>
+</div>
+<hr />
+<h2 id="kredit-zuruckzahlen">Kredit zurückzahlen</h2>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="n">paid</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">repayPersonalLoan</span><span class="p">(</span>
+<span class="w">        </span><span class="n">playerId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">amountCents</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Euro-Variante:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="n">paid</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">repayPersonalLoanEuros</span><span class="p">(</span>
+<span class="w">        </span><span class="n">playerId</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"500"</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Der Rückgabewert beschreibt den tatsächlich gezahlten Betrag.</p>
+<hr />
+<h1 id="firmenkonten">🏢 Firmenkonten</h1>
+<h2 id="firma-erstellen">Firma erstellen</h2>
+<div class="highlight"><pre><span></span><code><span class="n">UUID</span><span class="w"> </span><span class="n">accountId</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">createBusinessAccount</span><span class="p">(</span>
+<span class="w">        </span><span class="n">owner</span><span class="p">,</span>
+<span class="w">        </span><span class="n">companyName</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Alternativ kann eine Konto-ID mitgegeben werden:</p>
+<div class="highlight"><pre><span></span><code><span class="n">UUID</span><span class="w"> </span><span class="n">accountId</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">createBusinessAccount</span><span class="p">(</span>
+<span class="w">        </span><span class="n">accountId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">owner</span><span class="p">,</span>
+<span class="w">        </span><span class="n">companyName</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">20.000-€-Gründungsgebühr</p>
+<p><code>createBusinessAccount</code> ist ein technischer Kontoerzeuger.</p>
+<p>Die 20.000-€-Gründungsgebühr des normalen Spielerablaufs wird <strong>nicht automatisch durch jeden direkten API-Aufruf</strong> von <code>createBusinessAccount</code> erhoben.</p>
+<p>Integrationen müssen ihren gewünschten Gründungsablauf selbst entsprechend abstimmen.</p>
+</div>
+<hr />
+<h2 id="firmenkonto-vorhanden">Firmenkonto vorhanden?</h2>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">exists</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">businessAccountExists</span><span class="p">(</span><span class="n">accountId</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="firmenguthaben">Firmenguthaben</h2>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">getBusinessBalance</span><span class="p">(</span><span class="n">accountId</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h1 id="firma-eines-spielers-finden">🔎 Firma eines Spielers finden</h1>
+<div class="highlight"><pre><span></span><code><span class="n">UUID</span><span class="w"> </span><span class="n">businessAccountId</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">getBusinessAccountForPlayer</span><span class="p">(</span>
+<span class="w">        </span><span class="n">playerId</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Die Methode liefert die Firmenkonto-UUID eines Besitzers oder Mitglieds.</p>
+<p>Wird keine Firma gefunden, lautet das Ergebnis:</p>
+<div class="highlight"><pre><span></span><code><span class="kc">null</span>
+</code></pre></div>
+<p>Besitzer haben bei der Zuordnung Vorrang.</p>
+<hr />
+<h2 id="firmeninformationen">Firmeninformationen</h2>
+<p>Firmenname:</p>
+<div class="highlight"><pre><span></span><code><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">getBusinessAccountName</span><span class="p">(</span>
+<span class="w">        </span><span class="n">businessAccountId</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Besitzer:</p>
+<div class="highlight"><pre><span></span><code><span class="n">UUID</span><span class="w"> </span><span class="n">owner</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">getBusinessAccountOwner</span><span class="p">(</span>
+<span class="w">        </span><span class="n">businessAccountId</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Mitgliedschaft prüfen:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">member</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">isBusinessMember</span><span class="p">(</span>
+<span class="w">        </span><span class="n">businessAccountId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">playerId</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h1 id="firmenmitglieder-verwalten">👥 Firmenmitglieder verwalten</h1>
+<p>Mitglied hinzufügen:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">addBusinessMember</span><span class="p">(</span>
+<span class="w">        </span><span class="n">accountId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">playerId</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Mitglied entfernen:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">removeBusinessMember</span><span class="p">(</span>
+<span class="w">        </span><span class="n">accountId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">playerId</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Besitzer ändern:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">changeBusinessOwner</span><span class="p">(</span>
+<span class="w">        </span><span class="n">accountId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">newOwner</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h1 id="firmenguthaben-verandern">🏢 Firmenguthaben verändern</h1>
+<p>Einzahlung:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">depositBusiness</span><span class="p">(</span>
+<span class="w">        </span><span class="n">accountId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">amountCents</span><span class="p">,</span>
+<span class="w">        </span><span class="n">source</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Euro-Variante:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">depositBusinessEuros</span><span class="p">(</span>
+<span class="w">        </span><span class="n">accountId</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"19,99"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">source</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Auszahlung:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">withdrawBusiness</span><span class="p">(</span>
+<span class="w">        </span><span class="n">accountId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">amountCents</span><span class="p">,</span>
+<span class="w">        </span><span class="n">source</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h1 id="zahlungen-an-firmen">💸 Zahlungen an Firmen</h1>
+<p>Ein Spieler kann über die API Geld an ein Firmenkonto übertragen.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">paid</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">transferToBusinessEuros</span><span class="p">(</span>
+<span class="w">        </span><span class="n">player</span><span class="p">.</span><span class="na">getUUID</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">businessAccountId</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"19,99"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">TransactionSource</span><span class="p">.</span><span class="na">CITYSHOP</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Damit eignet sich MineBank beispielsweise für Shopsysteme.</p>
+<hr />
+<h1 id="firmenzahlung-an-spieler">🏢 → 👤 Firmenzahlung an Spieler</h1>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">transferFromBusiness</span><span class="p">(</span>
+<span class="w">        </span><span class="n">businessAccountId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">playerId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">amountCents</span><span class="p">,</span>
+<span class="w">        </span><span class="n">source</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Euro-Variante:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">transferFromBusinessEuros</span><span class="p">(</span>
+<span class="w">        </span><span class="n">businessAccountId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">playerId</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"19,99"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">source</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h1 id="firmenuberweisung">🏢 → 🏢 Firmenüberweisung</h1>
+<p>Auch Überweisungen zwischen zwei Firmenkonten werden unterstützt.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">transferBusinessToBusiness</span><span class="p">(</span>
+<span class="w">        </span><span class="n">fromAccountId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">toAccountId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">amountCents</span><span class="p">,</span>
+<span class="w">        </span><span class="n">source</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Euro-Variante:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">transferBusinessToBusinessEuros</span><span class="p">(</span>
+<span class="w">        </span><span class="n">fromAccountId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">toAccountId</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"19,99"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">source</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h1 id="bargeld-api">💶 Bargeld-API</h1>
+<h2 id="bargeldwert-ermitteln">Bargeldwert ermitteln</h2>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="n">cash</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">getCashValue</span><span class="p">(</span><span class="n">player</span><span class="p">);</span>
+</code></pre></div>
+<p><code>getCashValue</code> zählt loses Bargeld im Spielerinventar.</p>
+<p>Auch ein vom Menücursor gehaltener Bargeldstapel wird berücksichtigt.</p>
+<div class="admonition warning">
+<p class="admonition-title">Keine rekursive Suche</p>
+<p>Bargeld innerhalb von Portemonnaies oder anderen Behältern wird nicht rekursiv mitgezählt.</p>
+</div>
+<hr />
+<h2 id="bargeld-nehmen">Bargeld nehmen</h2>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">takeCash</span><span class="p">(</span>
+<span class="w">        </span><span class="n">player</span><span class="p">,</span>
+<span class="w">        </span><span class="n">amountCents</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Euro-Variante:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">takeCashEuros</span><span class="p">(</span>
+<span class="w">        </span><span class="n">player</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"19,99"</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="bargeld-geben">Bargeld geben</h2>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">giveCash</span><span class="p">(</span>
+<span class="w">        </span><span class="n">player</span><span class="p">,</span>
+<span class="w">        </span><span class="n">amountCents</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Euro-Variante:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">giveCashEuros</span><span class="p">(</span>
+<span class="w">        </span><span class="n">player</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"19,99"</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Keine automatische Gesamttransaktion</p>
+<p><code>takeCash</code> und <code>giveCash</code> sind einzelne Operationen.</p>
+<p>Mehrere beliebig kombinierte API-Aufrufe bilden nicht automatisch eine gemeinsame atomare Gesamttransaktion.</p>
+</div>
+<hr />
+<h1 id="barzahlung-an-eine-firma">🛒 Barzahlung an eine Firma</h1>
+<p>MineBank besitzt eine speziell dafür vorgesehene Barzahlungsfunktion.</p>
+<div class="highlight"><pre><span></span><code><span class="n">CashPaymentResult</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">payBusinessWithCashEuros</span><span class="p">(</span>
+<span class="w">        </span><span class="n">player</span><span class="p">,</span>
+<span class="w">        </span><span class="n">businessAccountId</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"19,99"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">TransactionSource</span><span class="p">.</span><span class="na">CITYSHOP</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Einkauf"</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Die Barzahlung plant unter anderem:</p>
+<ul>
+<li>Bargeldentnahme</li>
+<li>Wechselgeld</li>
+<li>notwendigen Inventarplatz</li>
+</ul>
+<p>Außerdem besitzt die Bank-/Bargeldoperation einen Rückrollpfad, falls die Gutschrift fehlschlägt.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warenübergabe gehört nicht dazu</p>
+<p>Die MineBank-Operation umfasst nicht automatisch die Warenübergabe oder die Speicherung der aufrufenden Shop-Mod.</p>
+<p>Diese Logik bleibt Aufgabe der integrierenden Mod.</p>
+</div>
+<hr />
+<h2 id="parameter-note">📝 Parameter <code>note</code></h2>
+<p>Der Parameter:</p>
+<div class="highlight"><pre><span></span><code><span class="n">note</span>
+</code></pre></div>
+<p>von <code>payBusinessWithCash</code> wird in der aktuellen Implementierung nicht als eigener Firmen-Buchungstext gespeichert.</p>
+<p>Aus dieser Signatur sollte deshalb keine vollständige Firmen-Buchhaltung mit Verwendungszweckhistorie abgeleitet werden.</p>
+<hr />
+<h1 id="staatskassen-api">🏛️ Staatskassen-API</h1>
+<h2 id="besitzer-id">Besitzer-ID</h2>
+<div class="highlight"><pre><span></span><code><span class="n">UUID</span><span class="w"> </span><span class="n">treasuryId</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">getStateTreasuryOwnerId</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h2 id="iban">IBAN</h2>
+<div class="highlight"><pre><span></span><code><span class="n">String</span><span class="w"> </span><span class="n">iban</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">getStateTreasuryIban</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h2 id="kontostand">Kontostand</h2>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">getStateTreasuryBalance</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h2 id="buchungen">Buchungen</h2>
+<div class="highlight"><pre><span></span><code><span class="n">List</span><span class="o">&lt;</span><span class="n">StateTreasuryBooking</span><span class="o">&gt;</span><span class="w"> </span><span class="n">bookings</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">getStateTreasuryBookings</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h1 id="bugelder">🚓 Bußgelder</h1>
+<p>Für CityPolice-artige Integrationen existieren spezielle Methoden.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">collectCityPoliceFine</span><span class="p">(</span>
+<span class="w">        </span><span class="n">playerId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">amountCents</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Mit Notiz:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">collectCityPoliceFine</span><span class="p">(</span>
+<span class="w">        </span><span class="n">playerId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">amountCents</span><span class="p">,</span>
+<span class="w">        </span><span class="n">note</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Euro-Variante:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">collectCityPoliceFineEuros</span><span class="p">(</span>
+<span class="w">        </span><span class="n">playerId</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"250"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">note</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h1 id="allgemeine-gebuhren">🏛️ Allgemeine Gebühren</h1>
+<p>Für allgemeine Gebühren kann Geld vom Spielerkonto an die Staatskasse übertragen werden.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">collectToStateTreasury</span><span class="p">(</span>
+<span class="w">        </span><span class="n">playerId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">amountCents</span><span class="p">,</span>
+<span class="w">        </span><span class="n">source</span><span class="p">,</span>
+<span class="w">        </span><span class="n">note</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Euro-Variante:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">collectToStateTreasuryEuros</span><span class="p">(</span>
+<span class="w">        </span><span class="n">playerId</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"250"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">source</span><span class="p">,</span>
+<span class="w">        </span><span class="n">note</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h1 id="administrative-staatskassen-gutschrift">📥 Administrative Staatskassen-Gutschrift</h1>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">depositToStateTreasury</span><span class="p">(</span>
+<span class="w">        </span><span class="n">actorId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">amountCents</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Auch Varianten mit Notiz und Euro-String stehen zur Verfügung.</p>
+<hr />
+<h1 id="staatskassen-verwalter">👨‍💼 Staatskassen-Verwalter</h1>
+<p>Verwalter prüfen:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">manager</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">isStateTreasuryManager</span><span class="p">(</span>
+<span class="w">        </span><span class="n">managerId</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Verwalterstatus setzen:</p>
+<div class="highlight"><pre><span></span><code><span class="n">BankApi</span><span class="p">.</span><span class="na">setStateTreasuryManager</span><span class="p">(</span>
+<span class="w">    </span><span class="n">managerId</span><span class="p">,</span>
+<span class="w">    </span><span class="kc">true</span>
+<span class="p">);</span>
+</code></pre></div>
+<hr />
+<h1 id="staatskasse-spieler">📤 Staatskasse → Spieler</h1>
+<p>Über den Verwalterweg:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">transferStateTreasuryToPlayer</span><span class="p">(</span>
+<span class="w">        </span><span class="n">managerId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">receiverId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">amountCents</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>Hierbei existieren ebenfalls Varianten mit Notiz und Euro-Betrag.</p>
+<hr />
+<h1 id="allgemeine-staatskassenauszahlung">⚠️ Allgemeine Staatskassenauszahlung</h1>
+<p>Zusätzlich existiert:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">payFromStateTreasury</span><span class="p">(</span>
+<span class="w">        </span><span class="n">receiverId</span><span class="p">,</span>
+<span class="w">        </span><span class="n">amountCents</span><span class="p">,</span>
+<span class="w">        </span><span class="n">source</span><span class="p">,</span>
+<span class="w">        </span><span class="n">note</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p>sowie:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">payFromStateTreasuryEuros</span><span class="p">(</span>
+<span class="w">        </span><span class="n">receiverId</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"250"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">source</span><span class="p">,</span>
+<span class="w">        </span><span class="n">note</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Eigene Berechtigungsprüfung erforderlich</p>
+<p><code>payFromStateTreasury</code> besitzt keinen Verwalterparameter.</p>
+<p>Die aufrufende Mod muss deshalb ihre eigene Berechtigungsprüfung durchführen.</p>
+</div>
+<hr />
+<h1 id="events">📡 Events</h1>
+<p>MineBank unterstützt <code>BankEventListener</code>.</p>
+<p>Listener registrieren:</p>
+<div class="highlight"><pre><span></span><code><span class="n">BankApi</span><span class="p">.</span><span class="na">registerListener</span><span class="p">(</span><span class="n">listener</span><span class="p">);</span>
+</code></pre></div>
+<p>Listener entfernen:</p>
+<div class="highlight"><pre><span></span><code><span class="n">BankApi</span><span class="p">.</span><span class="na">unregisterListener</span><span class="p">(</span><span class="n">listener</span><span class="p">);</span>
+</code></pre></div>
+<p>Ein <code>BankTransactionEvent</code> liefert Informationen wie:</p>
+<ul>
+<li>Konto-ID</li>
+<li>Betrag</li>
+<li>alter Kontostand</li>
+<li>neuer Kontostand</li>
+<li>Typ</li>
+<li>Quelle</li>
+<li>Gegenkonto</li>
+<li>Transaktions-ID</li>
+<li>Zeitstempel</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Event ≠ vollständige Buchhaltung</p>
+<p>Das Beobachten von Events bedeutet nicht automatisch, dass eine dauerhaft gespeicherte vollständige Transaktionshistorie aller Konten vorhanden ist.</p>
+</div>
+<hr />
+<h1 id="ruckgabewerte-prufen">↩️ Rückgabewerte prüfen</h1>
+<p>Integrationen sollten die Rückgabewerte der API immer prüfen.</p>
+<p>Beispielsweise:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">BankApi</span><span class="p">.</span><span class="na">depositEuros</span><span class="p">(</span>
+<span class="w">        </span><span class="n">playerId</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"100"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">source</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Zahlung / Gutschrift fehlgeschlagen</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Besonders wichtig:</p>
+<ul>
+<li>boolesche Rückgabewerte prüfen</li>
+<li><code>createBusinessAccount</code> kann <code>null</code> liefern</li>
+<li>Kreditrückzahlung liefert den tatsächlich gezahlten Centbetrag</li>
+<li>Barzahlungen liefern ein <code>CashPaymentResult</code></li>
+</ul>
+<hr />
+<h1 id="beispielintegration-shop">🧩 Beispielintegration: Shop</h1>
+<p>Ein Shopsystem könnte MineBank beispielsweise so verwenden:</p>
+<div class="highlight"><pre><span></span><code>🛒 Spieler kauft Ware
+        ↓
+🏢 Firmenkonto des Shops ermitteln
+        ↓
+💶 Preis 19,99 €
+        ↓
+BankApi.transferToBusinessEuros(...)
+        ↓
+   ┌────┴────┐
+   │         │
+ true      false
+   │         │
+   ↓         ↓
+Ware      Kauf
+geben    abbrechen
+</code></pre></div>
+<p>Die Warenübergabe bleibt Aufgabe der Shop-Mod.</p>
+<hr />
+<h1 id="typische-integrationen">🧩 Typische Integrationen</h1>
+<table>
+<thead>
+<tr>
+<th>Integration</th>
+<th>MineBank-Funktionen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CityShop</td>
+<td>Firmenzuordnung, Mitarbeiterabfrage, Kontozahlungen, atomare Barzahlung</td>
+</tr>
+<tr>
+<td>CityRegion</td>
+<td>Spielerkonto-Zahlungen und Gebühren an die Staatskasse</td>
+</tr>
+<tr>
+<td>CityPolice</td>
+<td>Bußgelder vom Spielerkonto an die Staatskasse</td>
+</tr>
+</tbody>
+</table>
+<p>Diese Namen beschreiben die in der MineBank-Dokumentation vorgesehenen Integrationsbeispiele. Ob eine konkrete externe Mod die API tatsächlich verwendet, muss separat geprüft werden.</p>
+<hr />
+<h1 id="offentliche-api-signaturen">📚 Öffentliche API-Signaturen</h1>
+<p>Die folgenden Methoden entsprechen den dokumentierten öffentlichen statischen Methoden aus <code>BankApi.java</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">bindServer</span><span class="p">(</span><span class="n">MinecraftServer</span><span class="w"> </span><span class="n">server</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">clearServer</span><span class="p">(</span><span class="n">MinecraftServer</span><span class="w"> </span><span class="n">server</span><span class="p">);</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">accountExists</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">getBalance</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">hasBalance</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">hasBalanceEuros</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">);</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">deposit</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">deposit</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">depositEuros</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">depositEuros</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">);</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">withdraw</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">withdraw</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">withdrawEuros</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">withdrawEuros</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">);</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">transfer</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">fromPlayerId</span><span class="p">,</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">toPlayerId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">transfer</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">fromPlayerId</span><span class="p">,</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">toPlayerId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">transferEuros</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">fromPlayerId</span><span class="p">,</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">toPlayerId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">transferEuros</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">fromPlayerId</span><span class="p">,</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">toPlayerId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">);</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">PersonalLoan</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getPersonalLoans</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getOpenPersonalLoanCount</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">takePersonalLoan</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">takePersonalLoanEuros</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">repayPersonalLoan</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">repayPersonalLoanEuros</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">);</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="nf">createBusinessAccount</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">owner</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">companyName</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="nf">createBusinessAccount</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">accountId</span><span class="p">,</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">owner</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">companyName</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">businessAccountExists</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">accountId</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">getBusinessBalance</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">accountId</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="nf">getBusinessAccountForPlayer</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getBusinessAccountName</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">businessAccountId</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="nf">getBusinessAccountOwner</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">businessAccountId</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isBusinessMember</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">businessAccountId</span><span class="p">,</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">);</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">depositBusiness</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">accountId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">depositBusinessEuros</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">accountId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">withdrawBusiness</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">accountId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">withdrawBusinessEuros</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">accountId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">);</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">transferToBusiness</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">accountId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">transferToBusinessEuros</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">accountId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">transferFromBusiness</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">accountId</span><span class="p">,</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">transferFromBusinessEuros</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">accountId</span><span class="p">,</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">transferBusinessToBusiness</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">fromAccountId</span><span class="p">,</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">toAccountId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">transferBusinessToBusinessEuros</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">fromAccountId</span><span class="p">,</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">toAccountId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">);</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">addBusinessMember</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">accountId</span><span class="p">,</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">removeBusinessMember</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">accountId</span><span class="p">,</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">changeBusinessOwner</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">accountId</span><span class="p">,</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">newOwner</span><span class="p">);</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">getCashValue</span><span class="p">(</span><span class="n">Player</span><span class="w"> </span><span class="n">player</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">takeCash</span><span class="p">(</span><span class="n">Player</span><span class="w"> </span><span class="n">player</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">takeCashEuros</span><span class="p">(</span><span class="n">Player</span><span class="w"> </span><span class="n">player</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">giveCash</span><span class="p">(</span><span class="n">Player</span><span class="w"> </span><span class="n">player</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">giveCashEuros</span><span class="p">(</span><span class="n">Player</span><span class="w"> </span><span class="n">player</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">);</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">depositCashToBusiness</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">businessAccountId</span><span class="p">,</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="n">player</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">depositCashToBusinessEuros</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">businessAccountId</span><span class="p">,</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="n">player</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">);</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">CashPaymentResult</span><span class="w"> </span><span class="nf">payBusinessWithCash</span><span class="p">(</span><span class="n">Player</span><span class="w"> </span><span class="n">player</span><span class="p">,</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">businessAccountId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">note</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">CashPaymentResult</span><span class="w"> </span><span class="nf">payBusinessWithCashEuros</span><span class="p">(</span><span class="n">Player</span><span class="w"> </span><span class="n">player</span><span class="p">,</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">businessAccountId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">note</span><span class="p">);</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="nf">getStateTreasuryOwnerId</span><span class="p">();</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getStateTreasuryIban</span><span class="p">();</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">getStateTreasuryBalance</span><span class="p">();</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">List</span><span class="o">&lt;</span><span class="n">StateTreasuryBooking</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getStateTreasuryBookings</span><span class="p">();</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">collectCityPoliceFine</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">collectCityPoliceFine</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">note</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">collectCityPoliceFineEuros</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">note</span><span class="p">);</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">collectToStateTreasury</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">note</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">collectToStateTreasuryEuros</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">playerId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">note</span><span class="p">);</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">depositToStateTreasury</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">actorId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">depositToStateTreasury</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">actorId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">note</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">depositToStateTreasuryEuros</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">actorId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">note</span><span class="p">);</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isStateTreasuryManager</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">managerId</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setStateTreasuryManager</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">managerId</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">allowed</span><span class="p">);</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">transferStateTreasuryToPlayer</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">managerId</span><span class="p">,</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">receiverId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">transferStateTreasuryToPlayer</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">managerId</span><span class="p">,</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">receiverId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">note</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">transferStateTreasuryToPlayerEuros</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">managerId</span><span class="p">,</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">receiverId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">note</span><span class="p">);</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">payFromStateTreasury</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">receiverId</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">amountCents</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">note</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">payFromStateTreasuryEuros</span><span class="p">(</span><span class="n">UUID</span><span class="w"> </span><span class="n">receiverId</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">amountEuros</span><span class="p">,</span><span class="w"> </span><span class="n">TransactionSource</span><span class="w"> </span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">note</span><span class="p">);</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">registerListener</span><span class="p">(</span><span class="n">BankEventListener</span><span class="w"> </span><span class="n">listener</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">unregisterListener</span><span class="p">(</span><span class="n">BankEventListener</span><span class="w"> </span><span class="n">listener</span><span class="p">);</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Technische Methoden</p>
+<p><code>bindServer</code> und <code>clearServer</code> sind technische Lebenszyklusmethoden.</p>
+<p>Sie sind keine Spielerfunktionen oder Minecraft-Befehle.</p>
+</div>
+<hr />
+<h2 id="nachster-schritt">➡️ Nächster Schritt</h2>
+<p>Für konkrete Beispiele zur Zusammenarbeit von MineBank mit anderen Mods gibt es eine eigene Seite:</p>
+<p><strong>Weiter: <a href="../integrationen/">🔌 Integrationen</a></strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Zurück zum Seitenanfang
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Fußzeile" >
+        
+          
+          <a href="../../probleme/" class="md-footer__link md-footer__link--prev" aria-label="Zurück: Problemlösungen">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Zurück
+              </span>
+              <div class="md-ellipsis">
+                Problemlösungen
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../integrationen/" class="md-footer__link md-footer__link--next" aria-label="Weiter: Integrationen">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Weiter
+              </span>
+              <div class="md-ellipsis">
+                Integrationen
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
