@@ -7,16 +7,16 @@ theme:
   language: de
 
   palette:
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
+    # Dark Mode – Standard
+    - scheme: slate
       primary: indigo
       accent: amber
       toggle:
         icon: material/weather-sunny
         name: Helles Design
 
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
+    # Light Mode – optional
+    - scheme: default
       primary: indigo
       accent: amber
       toggle:
