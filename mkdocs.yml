@@ -1,41 +1,82 @@
 site_name: MineBank Wiki
 site_description: Offizielle Dokumentation der Minecraft-Mod MineBank
+site_author: Toast_ist_Down
 
 theme:
   name: material
   language: de
+
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Helles Design
+
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Dunkles Design
+
   features:
     - navigation.sections
     - navigation.expand
     - navigation.top
+    - navigation.footer
     - search.suggest
     - search.highlight
+    - search.share
+    - content.code.copy
 
 nav:
-  - Startseite: index.md
-  - Erste Schritte:
+  - 🏠 Startseite: index.md
+
+  - 🚀 Erste Schritte:
       - Installation: erste-schritte/installation.md
       - Schnellstart: erste-schritte/schnellstart.md
-  - Konten:
+
+  - 💳 Konten & Karten:
       - Privatkonto: konten/privatkonto.md
       - Bankkarte: konten/bankkarte.md
       - Firmenkonto: konten/firmenkonto.md
-  - Bargeld & Automaten:
+      - Firmenkarte: konten/firmenkarte.md
+
+  - 💶 Bargeld & Automaten:
       - Bankautomat: bargeld/bankautomat.md
       - Münzeinzahlautomat: bargeld/muenzautomat.md
       - Portemonnaie: bargeld/portemonnaie.md
       - Geldkoffer: bargeld/geldkoffer.md
-  - Bank:
+
+  - 🏦 Bankverwaltung:
       - Bankmitarbeiter: bank/bankmitarbeiter.md
+      - Kartendrucker: bank/kartendrucker.md
       - Bankcomputer: bank/bankcomputer.md
       - Tresor: bank/tresor.md
       - Bankzonen: bank/bankzonen.md
-  - Kredite: kredite.md
-  - Daueraufträge: dauerauftraege.md
-  - Staatskasse: staatskasse.md
-  - Crafting-Rezepte: crafting.md
-  - Befehle: befehle.md
-  - Problemlösungen: probleme.md
-  - Entwickler:
+
+  - 💰 Kredite: kredite.md
+  - 🔄 Daueraufträge: dauerauftraege.md
+  - 🏛️ Staatskasse: staatskasse.md
+
+  - 📚 Referenz:
+      - Crafting-Rezepte: crafting.md
+      - Befehle: befehle.md
+      - Problemlösungen: probleme.md
+
+  - 👨‍💻 Entwickler:
       - API: entwickler/api.md
       - Integrationen: entwickler/integrationen.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
